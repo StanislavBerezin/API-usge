@@ -18,6 +18,8 @@ module.exports = {
                 sortBy: 'relevancy',
               })
               res.send(newsResponse)
+              res.render('index', { title: 'Express' });
+
         }
         catch(err){
 
