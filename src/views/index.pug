@@ -5,8 +5,18 @@ extends layout
 //- https://html-to-pug.com/
 
 block content
-  h1= title
-  p Welcome to #{title}
-  h1 Pug Examples
-   div.container
-     p Cool Pug example!
+  .intro-screen
+    #text-intro
+      h1 Cloud News Discussions
+      hr
+      h3 Engage with the world on Twitter
+  .wrapper
+    h1 Search your favourite topic
+    .search
+      input(type='search' placeholder='Enter a keyword for your news search')
+      input(type='submit' name='searchSubmit')
+    .hot-headlines
+      h1 Trending news
+      .articles-section
+        include article
+
