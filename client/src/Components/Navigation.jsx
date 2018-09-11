@@ -1,10 +1,17 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 
 
 
-const navBar = ( props ) => (
+import classess from './Nav.css'
 
+const navBar = ( ) => (
+
+
+        <div className={classess.Nav}>
+            <a>Search news</a>
+        </div>
+
+    
        
  
   

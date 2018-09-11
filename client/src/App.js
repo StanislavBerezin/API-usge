@@ -1,52 +1,28 @@
 import React, { Component } from 'react';
 
+import Nav from './Components/Navigation'
+import Footer from './Components/Footer'
 import './App.css';
-import { Menu, Icon } from 'antd';
-import 'antd/lib/menu/style';
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
-
+import {Route, Switch} from 'react-router-dom'
+import Main from './Containers/Main'
+import Sum from './Containers/Summary/Sum'
+import Sent from './Containers/Sentiment/Sent'
 class App extends Component {
 
-  state = {
-    current: 'mail',
-  }
 
-  handleClick = (e) => {
-    console.log('click ', e);
-    this.setState({
-      current: e.key,
-    });
-  }
   render() {
     return (
       <div>
-         <Menu
-        onClick={this.handleClick}
-        selectedKeys={this.state.current}
-        mode="horizontal"
-      >
-        <Menu.Item key="mail">
-          <Icon type="mail" />Navigation ssOne
-        </Menu.Item>
-        <Menu.Item key="app" disabled>
-          <Icon type="appstore" />Navigation Two
-        </Menu.Item>
-        <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting" />Navigation Three - Submenu</span>}>
-          <MenuItemGroup title="Item 1">
-            <Menu.Item key="setting:1">Option 1</Menu.Item>
-            <Menu.Item key="setting:2">Option 2</Menu.Item>
-          </MenuItemGroup>
-          <MenuItemGroup title="Item 2">
-            <Menu.Item key="setting:3">Option 3</Menu.Item>
-            <Menu.Item key="setting:4">Option 4</Menu.Item>
-          </MenuItemGroup>
-        </SubMenu>
-        <Menu.Item key="alipay">
-          <a href="https://ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
-        </Menu.Item>
-      </Menu>
+        <Nav></Nav>
+          
+          <Switch>
+            <Route path="/" exact component={Main}/>
+            <Route path="/article/:id" component={Sum}></Route>
+            <Route path="/polarity/:id" component={Sent}></Route>
+          </Switch>
+        <Footer></Footer>
       </div>
+
     );
   }
 }

@@ -1,0 +1,47 @@
+.Main{
+    min-height:100vh;
+    max-width:1024px;
+    text-align: center;
+    margin: 0 auto;
+    display:flex;
+    flex-direction: column;
+}
+
+.Source{
+    padding:15px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 1s;
+    background-color:#16a085 ;
+    color: #fff;
+    margin-right: 5px;
+    transition: 1s;
+}
+.Sentiment{
+    padding:15px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 1s;
+    background-color:#3498db ;
+    color: #fff;
+    transition:1s;
+}
+a:hover{
+    background-color:#2ecc71;
+    opacity:1;
+}
+
+.Links{
+    margin-top:30px;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom:30px;
+}
+
+.Image{
+    max-width:500px;
+    max-height:500px;
+    align-self: center;
+    margin-bottom:30px;
+}
