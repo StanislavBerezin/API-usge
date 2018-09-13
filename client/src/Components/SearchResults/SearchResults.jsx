@@ -1,26 +1,30 @@
-import React from 'react';
+import React from "react";
 
-import classess from './SearchResults.css'
+import classess from "./SearchResults.css";
+import { Link } from "react-router-dom";
 
-
-const results = ( ) => (
-
-    <div>
-        <div className={classess.Card}>
-        <img src="https://cdn.cnn.com/cnnnext/dam/assets/180906215153-01-trump-rally-0906-super-tease.jpg" 
-            className={classess.Image} 
-            alt="Smiley face" height="150" width="270"/>
-            <div className={classess.Text}>
-                <h5>Tita asd asd asd asdas dasd asd asdas dasdasdaksjd lakjsdkajskd jaskl djaksdjaklsjdkalsjd kasjdlkajd ajsdka lsd jad jasdklsdasdasdas  asd asd asd asd asd asdasdasd as dasd asda sdasdle</h5>
-                <a className={classess.Summary}>Get summary</a>
-                <a className={classess.Sentiment}>Get sentiment</a>
-            </div>            
-        
-        </div>
+const results = props => (
+  <div className={classess.Card}>
+    <img
+      src={props.src}
+      className={classess.Image}
+      alt="Smiley face"
+      height="150"
+      width="270"
+    />
+    <h5>{props.title}</h5>
+    <div className={classess.Text}>
+      <Link to={`/article/${props.title}`} className={classess.Summary}>
+        Get summary
+      </Link>
+      <Link to={`/polarity/${props.title}`} className={classess.Sentiment}>
+        Get sentiment
+      </Link>
+      <Link to={`/tweets/${props.title}`} className={classess.Sentiment}>
+        View tweets
+      </Link>
     </div>
-       
- 
-  
-)
+  </div>
+);
 
 export default results;

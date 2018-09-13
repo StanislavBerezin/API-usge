@@ -8,10 +8,23 @@ const TextApi = require('./controllers/TextApi')
 //recieves object of express app and makes routes
 
 module.exports = (app) => {
-    
-    app.get('/news', 
+
+
+    app.get('/news',
         NewsControl.getNews)
-    
+
+    app.post('/searchNews',
+        NewsControl.searchedNews)
+
+    app.post('/specific',
+        NewsControl.getArticle)
+
+    app.post('/polarity',
+        NewsControl.getSentiment)
+
+    app.post('/tweets',
+        NewsControl.getTweets)
+
     app.get('/analyse',
         TextApi.getSummary)
 

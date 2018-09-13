@@ -1,9 +1,10 @@
-.Main{
-    min-height:100vh;
-    max-width:1024px;
-    text-align: center;
-    margin: 0 auto;
+.Main {
+	min-height: 100vh;
+	max-width: 1024px;
+	text-align: center;
+	margin: 0 auto;
 }
+
 input[type=submit] {
 	height: 50px;
 	cursor: pointer;
@@ -26,6 +27,7 @@ input[type=submit]:hover {
 	background-color: #0984e3;
 	border: 1px solid #0984e3;
 }
+
 input[type=search] {
 	padding: 5px;
 	border: 2px solid #ccc;
@@ -34,17 +36,20 @@ input[type=search] {
 	outline: none;
 	height: 50px;
 	transition: 1s ease-in-out;
-    flex: 1 1 100px;
-    margin-right:20px;
+	flex: 1 1 100px;
+	margin-right: 20px;
 }
 
 input[type=search]:focus {
 	border-color: #0984e3;
 }
 
-.Cards{
-	display:flex;
-	flex-wrap:wrap;
-	justify-content: space-around;
-	
+.Cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	flex-direction: row;
+	margin: 0 auto;
+
+
 }

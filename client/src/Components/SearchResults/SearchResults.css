@@ -1,37 +1,52 @@
-.Card{
+.Card {
 
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width:270px;
+
     flex-wrap: wrap;
     opacity: 0.9;
-    margin:20px;
+    margin: 20px;
+    max-width: 320px;
 }
 
 
 
-.Summary{
-    padding:15px;
+.Summary {
+    padding: 15px;
     cursor: pointer;
     border-radius: 10px;
     transition: 1s;
-    background-color:#16a085 ;
+    background-color: #16a085;
     color: #fff;
     margin-right: 5px;
     transition: 1s;
 }
-.Sentiment{
-    padding:15px;
+
+.Sentiment {
+    padding: 15px;
     cursor: pointer;
     border-radius: 10px;
     transition: 1s;
-    background-color:#3498db ;
+    background-color: #3498db;
     color: #fff;
-    transition:1s;
+    transition: 1s;
+    margin-right: 5px;
 }
-.Card a:hover{
-    background-color:#2ecc71;
-    opacity:1;
+
+a {
+    text-decoration: none;
+}
+
+.Card a:hover {
+    background-color: #2ecc71;
+    opacity: 1;
+}
+
+.Text {
+
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
