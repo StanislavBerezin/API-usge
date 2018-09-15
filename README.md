@@ -1,23 +1,23 @@
 # (1) Start production
 On your local machine
 TO build
-1.1) ```docker login``` enter your credentials
-1.2) ```docker build -t (yourDocHubName)/client .```
-1.3)```docker build -t (yourDocHubName)/nginx .```
-1.4)```docker build -t (yourDocHubName)/server .```
+- 1.1) ```docker login``` enter your credentials
+- 1.2) ```docker build -t (yourDocHubName)/client .```
+- 1.3)```docker build -t (yourDocHubName)/nginx .```
+- 1.4)```docker build -t (yourDocHubName)/server .```
 
 To push
-1.5) ```docker push (yourDocHubName)/client```
-1.6) ```docker push (yourDocHubName)/nginx```
-1.7) ```docker push (yourDocHubName)/server```
+- 1.5) ```docker push (yourDocHubName)/client```
+- 1.6) ```docker push (yourDocHubName)/nginx```
+- 1.7) ```docker push (yourDocHubName)/server```
 All of these will push images to docker hub on your profile
 
 # (2) Create EC2 instance on Amazon
-2.1) Get inside of the instance
-2.2) ```sudo curl -fsSL https://get.docker.com/ | sh ``` to install docker
-2.3) ```sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose``` to install docker compose
-2.4)```sudo chmod +x /usr/local/bin/docker-compose``` give access
-2.5) Create ```docker-compose.yml``` with the following code:
+- 2.1) Get inside of the instance
+- 2.2) ```sudo curl -fsSL https://get.docker.com/ | sh ``` to install docker
+- 2.3) ```sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose``` to install docker compose
+- 2.4)```sudo chmod +x /usr/local/bin/docker-compose``` give access
+- 2.5) Create ```docker-compose.yml``` with the following code:
 ```
 version: '3'
 services:
@@ -35,7 +35,7 @@ services:
 
 replace coconicola with your username
 
-2.6) ```sudo docker-compose up --build ``` will start the server
+- 2.6) ```sudo docker-compose up --build ``` will start the server
 
 
 # Possible issues
