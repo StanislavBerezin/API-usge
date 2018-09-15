@@ -3,13 +3,14 @@ import React, { Component } from "react";
 import classess from "./Sum.css";
 import axios from "../../Axios";
 import { Link } from "react-router-dom";
-
+import { ClipLoader } from "react-spinners";
 class Sum extends Component {
   state = {
     img: "",
     summary: "",
     title: "",
-    url: ""
+    url: "",
+    loading: true
   };
 
   componentDidMount() {
@@ -29,19 +30,30 @@ class Sum extends Component {
             img: searchNews[0].urlToImage,
             title: searchNews[0].title,
             url: searchNews[0].url,
-            summary
+            summary,
+            loading: false
           });
         });
     }
   }
+
   render() {
     return (
       <div className={classess.Main}>
         <h1>{this.state.title}</h1>
+        <div className="sweet-loading">
+          <ClipLoader
+            className={classess.Fix}
+            sizeUnit={"px"}
+            size={150}
+            color={"#123abc"}
+            loading={this.state.loading}
+          />
+        </div>
         <img
           src={this.state.img}
           className={classess.Image}
-          alt="Smiley face"
+          alt={this.state.title}
         />
         <div>{this.state.summary}</div>
         <div className={classess.Links}>

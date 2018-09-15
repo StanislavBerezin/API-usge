@@ -7,7 +7,7 @@ const card = props => (
     <div className={classess.Card}>
       <div className={classess.Credentials}>
         <h4>{props.name}</h4>
-        <img src={props.img} />
+        <img src={props.img} alt={props.name} />
       </div>
       <p>{props.text}</p>
       <div className={classess.Last}>

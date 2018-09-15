@@ -28,5 +28,8 @@ module.exports = (app) => {
     app.get('/analyse',
         TextApi.getSummary)
 
+    app.post('/hash',
+        NewsControl.getSpecificTweet)
+
 
 }

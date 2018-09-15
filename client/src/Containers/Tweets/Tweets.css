@@ -35,3 +35,39 @@
     display: flex;
     justify-content: space-around;
 }
+
+.DisplayHash {
+    display: flex;
+    flex-direction: column;
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li {
+    display: inline;
+    margin-top: 10px;
+    overflow-wrap: break-word;
+    margin-right: 10px;
+}
+
+.Feedbacks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 auto;
+
+
+}
+
+.Test {
+    color: red;
+}

@@ -25,17 +25,21 @@ module.exports = {
 
     // Displaying news    
     async getNews(req, res) {
-
+        var date = new Date()
+        var converted = JSON.stringify(date)
+        var sliced = converted.slice(0, 11)
         let news = await newsapi.v2.everything({
             q: "Trump",
             sources: 'bbc-news,the-verge',
             domains: 'bbc.co.uk, techcrunch.com',
-            from: '2018-08-13',
-            to: '2018-08-13',
+            from: sliced,
+            to: sliced,
             language: 'en',
             sortBy: 'relevancy',
             page: 1
         })
+
+
 
         res.send(news)
 
@@ -50,13 +54,16 @@ module.exports = {
             } else {
                 newsDecision = req.body.search.toString()
             }
+            var date = new Date()
+            var converted = JSON.stringify(date)
+            var sliced = converted.slice(0, 11)
 
             let news = await newsapi.v2.everything({
                 q: newsDecision,
                 sources: 'bbc-news,the-verge',
                 domains: 'bbc.co.uk, techcrunch.com',
-                from: '2018-08-13',
-                to: '2018-08-13',
+                from: sliced,
+                to: sliced,
                 language: 'en',
                 sortBy: 'relevancy',
                 page: 1
@@ -82,13 +89,15 @@ module.exports = {
 
 
             let newsDecision = req.body.specific.toString()
-
+            var date = new Date()
+            var converted = JSON.stringify(date)
+            var sliced = converted.slice(0, 11)
             newsapi.v2.everything({
                 q: newsDecision,
                 sources: 'bbc-news,the-verge',
                 domains: 'bbc.co.uk, techcrunch.com',
-                from: '2018-08-13',
-                to: '2018-08-13',
+                from: sliced,
+                to: sliced,
                 language: 'en',
                 sortBy: 'relevancy',
                 page: 1
@@ -131,12 +140,15 @@ module.exports = {
 
     async getSentiment(req, res) {
         let newsDecision = req.body.title.toString()
+        var date = new Date()
+        var converted = JSON.stringify(date)
+        var sliced = converted.slice(0, 11)
         newsapi.v2.everything({
             q: newsDecision,
             sources: 'bbc-news,the-verge',
             domains: 'bbc.co.uk, techcrunch.com',
-            from: '2018-08-13',
-            to: '2018-08-13',
+            from: sliced,
+            to: sliced,
             language: 'en',
             sortBy: 'relevancy',
             page: 1
@@ -165,15 +177,16 @@ module.exports = {
 
     async getTweets(req, res) {
 
-
         let newsDecision = req.body.specific.toString()
-
+        var date = new Date()
+        var converted = JSON.stringify(date)
+        var sliced = converted.slice(0, 11)
         newsapi.v2.everything({
             q: newsDecision,
             sources: 'bbc-news,the-verge',
             domains: 'bbc.co.uk, techcrunch.com',
-            from: '2018-08-13',
-            to: '2018-08-13',
+            from: sliced,
+            to: sliced,
             language: 'en',
             sortBy: 'relevancy',
             page: 1
@@ -185,18 +198,18 @@ module.exports = {
                 },
                 function (error, response) {
                     if (error === null) {
-                        let cut = response.hashtags.splice(0, 2)
-                        let search = cut.join()
-                        var regexp = /#(\S)/g;
+                        let allHashtags = response.hashtags
+                        let search = response.hashtags[0]
 
-                        search = search.replace(regexp, '$1');
-                        console.log(search)
                         T.get('search/tweets', {
                             q: `${search} since:2017-01-11`,
-                            count: 10
+                            count: 10,
+                            language: 'en'
                         }, function (err, data, response) {
-                            console.log(data)
-                            res.send(data)
+                            res.send({
+                                data,
+                                allHashtags
+                            })
                         })
 
                     }
@@ -206,6 +219,20 @@ module.exports = {
 
 
 
+
+    },
+
+    getSpecificTweet(req, res) {
+        let hash = req.body.hash
+        T.get('search/tweets', {
+            q: `${hash} since:2017-01-11`,
+            count: 10,
+            language: 'en'
+        }, function (err, data, response) {
+            res.send({
+                data,
+            })
+        })
 
     }
 

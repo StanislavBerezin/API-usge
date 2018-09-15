@@ -4,17 +4,20 @@ import Intro from "../Components/Layout/Intro";
 import axios from "../Axios";
 import SearchResults from "../Components/SearchResults/SearchResults";
 import Aux from "../Aux/Aux";
+import { ClipLoader } from "react-spinners";
 class Main extends Component {
   state = {
     defaultNews: [],
     search: "",
-    searchNews: []
+    searchNews: [],
+    loading: true
   };
 
   componentDidMount() {
     axios.get("/news").then(response => {
-      const defaultNews = response.data.articles;
-      this.setState({ defaultNews });
+      const defaultNews = response.data.articles.slice(0, 11);
+      defaultNews.slice(0, 11);
+      this.setState({ defaultNews, loading: false });
     });
   }
   // title, urlToImage, descrsiption
@@ -25,14 +28,15 @@ class Main extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
+    this.setState({ defaultNews: [], searchNews: [], loading: true });
     axios
       .post("/searchNews", {
         search: this.state.search
       })
       .then(response => {
-        const searchNews = response.data.articles;
-        this.setState({ searchNews });
+        const searchNews = response.data.articles.slice(0, 11);
+
+        this.setState({ searchNews, loading: false });
       });
   };
 
@@ -82,6 +86,15 @@ class Main extends Component {
               </label>
               <input type="submit" value="Submit" />
             </form>
+          </div>
+          <div className="sweet-loading">
+            <ClipLoader
+              className={classess.Fix}
+              sizeUnit={"px"}
+              size={150}
+              color={"#123abc"}
+              loading={this.state.loading}
+            />
           </div>
           <div className={classess.Cards}>{cards}</div>
         </div>
