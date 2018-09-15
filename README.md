@@ -52,3 +52,5 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```
 after dont forget to login ```docker login```
 
+4) If need to transfer scripts from local PC to EC2 instance
+```to transfer files to AWS ac2 instance scp -i [secretfile.pem] [whatToTranfsfer] [connections]us-west-2.compute.amazonaws.com:~[path]```
