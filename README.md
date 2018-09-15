@@ -42,3 +42,13 @@ replace coconicola with your username
 
 1) Might not load if you setup the port incorrectly in step 2.5 under nginx, the reason its port ```2000``` its because it was setup during ES2 instance creation, so change accordingly
 2) You might need to do ```docker login``` to push and retrieve images
+3) Install docker and docker compose
+```
+sudo curl -fsSL https://get.docker.com/ | sh
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+```
+after dont forget to login ```docker login```
+
