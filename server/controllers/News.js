@@ -39,6 +39,7 @@ module.exports = {
             page: 1
         })
 
+        console.log(news)
 
 
         res.send(news)
@@ -68,7 +69,7 @@ module.exports = {
                 sortBy: 'relevancy',
                 page: 1
             })
-
+            console.log(news)
             res.send(news)
 
 

@@ -1,15 +1,17 @@
-version: '3'
-services: 
+version: "3"
+services:
   nginx:
     restart: always
+    image: coconicola/nginx
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
       # nginux on 80, but map it to 3050
-      - '3050:80'
-# api is the server, dont call it server because of the configurations in nginx
+      - "3050:80"
+  # api is the server, dont call it server because of the configurations in nginx
   api:
+    image: coconicola/server
     # so need to build that container
     build:
       # use the dockerfile with our info there
@@ -26,7 +28,8 @@ services:
       # check the server folder and send everything to :app
       - ./server:/app
   client:
-    build: 
+    image: coconicola/client
+    build:
       dockerfile: Dockerfile.dev
       context: ./client
     volumes:
