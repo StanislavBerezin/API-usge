@@ -12,7 +12,7 @@ class Tweet extends Component {
     loading: true
     //  user.screenName  user.name, profile_image_url
   };
-
+// when it mounts display the hashtags and tweets
   componentDidMount() {
     axios
       .post("/tweets", {
@@ -29,18 +29,23 @@ class Tweet extends Component {
             loading: false
           });
         }
+      }).catch(e=>{
+        console.log(e)
       });
   }
 
-  loadFeedbackOnHash(index) {
+  // whenever u press on the hashtag it will load news twees
+  loadFeedbackOnHash(each, index) {
     this.setState({ loading: true, feedbacks: [] });
-    axios.post("/hash", { hash: index }).then(response => {
+    axios.post("/hash", { hash: each }).then(response => {
       let feedbacks = response.data.data.statuses;
       this.setState({
         feedbacks: feedbacks,
         active: true,
         loading: false
       });
+    }).catch(e=>{
+      console.log(e)
     });
   }
 
@@ -48,6 +53,7 @@ class Tweet extends Component {
     let feedback = null;
     let hashtags = null;
 
+    // display hashtags in a form of a list
     hashtags = (
       <Aux>
         {this.state.hashtags.map((each, index) => {
@@ -55,7 +61,7 @@ class Tweet extends Component {
             <li
               key={index}
               id={index}
-              onClick={() => this.loadFeedbackOnHash(each)}
+              onClick={() => this.loadFeedbackOnHash(each, index)}
             >
               {each}
             </li>
@@ -63,7 +69,8 @@ class Tweet extends Component {
         })}
       </Aux>
     );
-
+    
+// display tweets
     feedback = (
       <Aux>
         {this.state.feedbacks.map((each, index) => {

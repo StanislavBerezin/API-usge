@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-
+// Basic footer
 import classess from './Footer.css'
 const foot = ( ) => (
 

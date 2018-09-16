@@ -2,7 +2,7 @@ import React from "react";
 
 import classess from "./SearchResults.css";
 import { Link } from "react-router-dom";
-
+// displaying each news card
 const results = props => (
   <div className={classess.Card}>
     <img

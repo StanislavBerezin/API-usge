@@ -13,6 +13,7 @@ class Sum extends Component {
     loading: true
   };
 
+  // when it mounts need to send information to back-end to find thart article and perform summarisation
   componentDidMount() {
     // console.log(this.props.match.params.id);
 
@@ -23,6 +24,7 @@ class Sum extends Component {
         .post("/specific", {
           specific: this.props.match.params.id
         })
+        // saving serach news and summary
         .then(response => {
           const searchNews = response.data.news.articles;
           const summary = response.data.text.join();
@@ -33,10 +35,13 @@ class Sum extends Component {
             summary,
             loading: false
           });
+        }).catch(e=>{
+          console.log(e)
         });
     }
   }
 
+  // displaying everything
   render() {
     return (
       <div className={classess.Main}>

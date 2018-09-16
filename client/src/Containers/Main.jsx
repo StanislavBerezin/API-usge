@@ -10,22 +10,27 @@ class Main extends Component {
     defaultNews: [],
     search: "",
     searchNews: [],
-    loading: true
+    loading: true,
+    error: false
   };
-
+// when it mounts get the default articles to display at least somethng
   componentDidMount() {
     axios.get("/news").then(response => {
       const defaultNews = response.data.articles.slice(0, 11);
       defaultNews.slice(0, 11);
+      // setting default news and removing loading circle
       this.setState({ defaultNews, loading: false });
+    }).catch(e=>{
+      console.log(e)
     });
   }
   // title, urlToImage, descrsiption
-
+// upading what is being searched
   handleChange = event => {
     this.setState({ search: event.target.value });
   };
 
+  // to submit the search to back end
   handleSubmit = event => {
     event.preventDefault();
     this.setState({ defaultNews: [], searchNews: [], loading: true });
@@ -37,16 +42,19 @@ class Main extends Component {
         const searchNews = response.data.articles.slice(0, 11);
 
         this.setState({ searchNews, loading: false });
+      }).catch(e=>{
+        console.log(e)
       });
   };
 
   render() {
     let cards = null;
 
+    // if there are searched news then display it
     if (this.state.searchNews.length > 0) {
       cards = (
         <Aux>
-          <h2>Results</h2>
+          {/* going thorugh each */}
           {this.state.searchNews.map((each, index) => {
             return (
               <SearchResults
@@ -58,6 +66,7 @@ class Main extends Component {
           })}
         </Aux>
       );
+      // if somethng else then display default ones
     } else {
       cards = (
         <Aux>
@@ -76,10 +85,12 @@ class Main extends Component {
 
     return (
       <div>
+        {/* intro screen */}
         <Intro />
         <div className={classess.Main}>
           <div>
             <h1>Search your news</h1>
+            {/* managing the form on submission */}
             <form onSubmit={this.handleSubmit}>
               <label>
                 <input type="search" name="name" onChange={this.handleChange} />
@@ -88,6 +99,7 @@ class Main extends Component {
             </form>
           </div>
           <div className="sweet-loading">
+          {/* loading circle */}
             <ClipLoader
               className={classess.Fix}
               sizeUnit={"px"}
@@ -96,6 +108,8 @@ class Main extends Component {
               loading={this.state.loading}
             />
           </div>
+          {/* display the cards */}
+          
           <div className={classess.Cards}>{cards}</div>
         </div>
       </div>

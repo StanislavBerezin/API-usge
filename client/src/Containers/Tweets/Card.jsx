@@ -2,6 +2,7 @@ import React from "react";
 import Aux from "../../Aux/Aux";
 import classess from "./Tweets.css";
 
+// the card for the tweet itself
 const card = props => (
   <Aux>
     <div className={classess.Card}>

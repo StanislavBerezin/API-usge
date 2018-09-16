@@ -14,6 +14,7 @@ class Sum extends Component {
     img: ""
   };
 
+  // when it mounts need to send data to back-end to perform sentiment check and display the image 
   componentDidMount() {
     // console.log(this.props.match.params.id);
 
@@ -70,12 +71,15 @@ class Sum extends Component {
                 loading: false
               });
           }
+        }).catch(e=>{
+          console.log(e)
         });
     }
   }
 
   render() {
     let details = null;
+    // responsible for displaying the polariry  and image
     if (!this.state.loading) {
       details = (
         <Aux>
@@ -95,7 +99,7 @@ class Sum extends Component {
         </Aux>
       );
     }
-
+// displaying everything and a loading circle
     return (
       <div className={classess.Main}>
         <div className="sweet-loading">
