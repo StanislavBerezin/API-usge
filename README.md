@@ -1,6 +1,6 @@
 # (1) Start production
 On your local machine
-TO build-
+TO build
 - 1.1) ```docker login``` enter your credentials
 - 1.2) ```docker build -t (yourDocHubName)/client .```
 - 1.3)```docker build -t (yourDocHubName)/nginx .```
