@@ -1,19 +1,19 @@
 const NewsAPI = require("newsapi");
-const newsapi = new NewsAPI("6fd2b09b18ec4132afdf4c52f3bf2116");
+const newsapi = new NewsAPI("");
 let _ = require("lodash");
 
 var AYLIENTextAPI = require("aylien_textapi");
 var textapi = new AYLIENTextAPI({
-    application_id: "883d946f",
-    application_key: "a18910bab0bc6b8975c656f03b0c5460"
+    application_id: "",
+    application_key: ""
 });
 
 var Twit = require("twit");
 var T = new Twit({
-    consumer_key: "C2tUjaWK9qOOU6BFWIMd52v45",
-    consumer_secret: "FIAjgruq3Kx09Iwwh0NiQYPp7wLyzG4wFzfSHiRowLBjy8S4md",
-    access_token: "843837609797287938-qcJFHUWUJY74tJ2Hdn6Jm4obRII7IlI",
-    access_token_secret: "eSdfw7DUEa0zMTpBBYmHcVjSrkwr8TGcETRP4hYLO795m"
+    consumer_key: "",
+    consumer_secret: "",
+    access_token: "",
+    access_token_secret: ""
 });
 
 let summarisedText;
