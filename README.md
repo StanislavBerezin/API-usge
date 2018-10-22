@@ -1,3 +1,5 @@
+p.s you will require twitter and aylien api keys
+
 # (1) Start production
 On your local machine
 TO build
